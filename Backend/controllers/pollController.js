@@ -24,6 +24,7 @@ const createPoll = asyncHandler(async (req, res) => {
       votes: 0,
     })),
   });
+  
 
   const user = await User.findById(authorId);
   user.polls.push(poll._id);
@@ -31,7 +32,7 @@ const createPoll = asyncHandler(async (req, res) => {
 
   res.status(201).json({
     success: true,
-    poll,
+    pollId: poll.pollId,
     message: "Poll created successfully",
   });
 });

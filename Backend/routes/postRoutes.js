@@ -6,8 +6,6 @@ const {
   votePost,
   addComment,
 } = require("../controllers/postController");
-
-
 const authMiddleware = require("../middlewares/authMiddleware");
 postRouter.post("/create", authMiddleware, createPost);
 postRouter.get("/", getPosts);
