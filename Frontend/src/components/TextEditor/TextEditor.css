@@ -1,0 +1,27 @@
+.ql-editor {
+  color: white; /* Set text color to white */
+  background-color: #131324; /* Match background to your design */
+  min-height: 150px; /* Adjust the height as needed */
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.ql-container {
+  border: 1px solid #444; /* Border for container */
+  border-radius: 4px;
+}
+.ql-toolbar {
+  background-color: #1d1e2c; /* Customize toolbar color */
+  border: 1px solid #444; /* Border for toolbar */
+  border-radius: 8px;
+}
+
+/* Customize placeholder text */
+.ql-editor::before {
+  color: #888; /* Placeholder text color */
+}
+
+/* Optional: Customize toolbar button hover states */
+.ql-toolbar button:hover {
+  background-color: rgb(173, 173, 192); /* Button hover background color */
+}
