@@ -33,9 +33,10 @@ const postSchema = z.object({
 });
 
 const createPost = async (req, res) => {
+  console.log(req.body);
   try {
     const validatedData = postSchema.parse(req.body);
-    const authorId = req.user.id; //  user ID
+    const authorId = req.user._id; //  user ID
 
     const newPost = new Post({
       title: validatedData.title,

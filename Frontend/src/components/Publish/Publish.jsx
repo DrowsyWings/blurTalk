@@ -8,12 +8,12 @@ import TextEditor from "../TextEditor/TextEditor";
 function Publish() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [pollOptions, setPollOptions] = useState(["", ""]); // Always show two options initially
+  const [pollOptions, setPollOptions] = useState(["", ""]); 
   const [isPoll, setIsPoll] = useState(false);
   const navigate = useNavigate();
 
   const handleAddOption = () => {
-    if (pollOptions.length < 4) {  // Allow adding up to four options
+    if (pollOptions.length < 4) { 
       setPollOptions([...pollOptions, ""]);
     }
   };
@@ -32,19 +32,20 @@ function Publish() {
   };
 
   const handleSubmit = async () => {
+    console.log("Submitting...");
     try {
       if (isPoll) {
         const response = await axios.post(
-          `https://localhost:3000/api/poll/create`,
+          `http://localhost:3000/api/poll/create`,
           {
             question: title,
             options: pollOptions,
           },
         );
-        navigate(`/user/polls`);
+        navigate(`/`);
       } else {
         const response = await axios.post(
-          `https://localhost:3000/api/post/create`,
+          `http://localhost:3000/api/post/create`,
           {
             title,
             content: description,
@@ -53,7 +54,7 @@ function Publish() {
         navigate(`/`);
       }
     } catch (error) {
-      console.error("Error publishing:", error.response ? error.response.data : error.message);
+      console.error("Error publishing:", error);
     }
   };
 
@@ -91,9 +92,7 @@ function Publish() {
             {!isPoll ? (
               <div className="mt-4 mb-4">
               <TextEditor
-                onChange={(e) => {
-                  setDescription(e.target.value);
-                }}
+                onChange={(content) => setDescription(content)}
               />
               </div>
             ) : (
@@ -145,27 +144,6 @@ function Publish() {
   );
 }
 
-// Text Editor Component for posts
-// function TextEditor({ onChange }) {
-//   return (
-//     <div className="mt-2">
-//       <div className="w-full mb-4">
-//         <div className="flex items-center justify-between border">
-//           <div className="my-2 bg-white rounded-b-lg w-full">
-//             <label className="sr-only">Publish post</label>
-//             <textarea
-//               onChange={onChange}
-//               id="editor"
-//               rows={8}
-//               className="focus:outline-none block w-full px-0 text-sm text-gray-800 bg-white border-0 pl-2"
-//               placeholder="Write an article..."
-//               required
-//             />
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
+
 
 export default Publish;
