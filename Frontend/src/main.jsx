@@ -10,7 +10,7 @@ import {
 import Layout from "./Layout";
 import Login from "./components/Login";
 import Register from "./components/Register"
-import PostPage from "./components/PostPage/PostPage";
+import PostPage from "./components/Home/HomePage";
 import Forgot from "./components/Forgot";
 import Chats from "./components/ChatPage/Chats"
 import Publish from "./components/Publish/Publish";

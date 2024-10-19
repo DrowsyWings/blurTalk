@@ -14,7 +14,10 @@ const getPosts = async (req, res) => {
       ? { createdAt: { $lt: new Date(lastPostDate) } }
       : {};
 
-    const posts = await Post.find(query).sort({ createdAt: -1 }).limit(limit);
+    const posts = await Post.find(query)
+          .sort({ createdAt: -1 })
+          .limit(limit)
+          .populate("author", ["username", "_id"]);
 
     res.status(200).json({
       success: true,
