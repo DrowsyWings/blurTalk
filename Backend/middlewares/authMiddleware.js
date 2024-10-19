@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const ApiError = require("../utils/ApiError.js");
 const User = require("../db/userModel.js")
 
-const verifyJWT = asyncHandler(async(req, _, next) => {
+const verifyJWT = (async(req, _, next) => {
   try {
       const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ", "")
       

@@ -5,7 +5,8 @@ const {
   loginUser,
   logoutUser,
   accountRecovery,
-  changePassword
+  changePassword,
+  refreshAccessToken
 } = require("../controllers/authController");
 const verifyJWT = require("../middlewares/authMiddleware.js")
 
@@ -14,8 +15,8 @@ authRouter.post("/signup", registerUser);
 authRouter.post("/account-recovery", accountRecovery);
 authRouter.post("/changePassword",changePassword );
 
-router.route("/logout").post(verifyJWT, logoutUser)
-router.route("/refresh-token").post(refreshAccessToken)
+authRouter.route("/logout").post(verifyJWT, logoutUser)
+authRouter.route("/refresh-token").post(refreshAccessToken)
 
 
 module.exports = authRouter;

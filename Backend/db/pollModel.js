@@ -16,4 +16,4 @@ const pollSchema = new mongoose.Schema({
     createdAt: { type: Date, default: Date.now },
 });
 
-export default mongoose.model('Poll', pollSchema);
+module.exports = mongoose.model('Poll', pollSchema);
